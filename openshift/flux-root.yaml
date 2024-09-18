@@ -6,7 +6,7 @@ metadata:
   namespace: test-yebyen
 spec:
   interval: 10m0s
-  path: ./flux-openshift
+  path: ./openshift
   prune: true
   sourceRef:
     kind: GitRepository
