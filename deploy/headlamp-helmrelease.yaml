@@ -1,0 +1,48 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: headlamp
+  namespace: test-yebyen
+spec:
+  chart:
+    spec:
+      chart: headlamp
+      version: 0.25.x
+      sourceRef:
+        kind: HelmRepository
+        name: headlamp
+        namespace: test-yebyen
+      interval: 10m0s
+  interval: 10m0s
+  values:
+    config:
+      pluginsDir: /build/plugins
+    initContainers:
+    - command:
+      - /bin/sh
+      - -c
+      - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/
+      image: kingdonb/plugins:canary
+      imagePullPolicy: Always
+      name: headlamp-plugins
+      volumeMounts:
+      - mountPath: /build/plugins
+        name: headlamp-plugins
+    clusterRoleBinding:
+      create: false
+    securityContext:
+      runAsUser: ~
+      runAsGroup: ~
+    persistentVolumeClaim:
+      accessModes:
+      - ReadWriteOnce
+      enabled: true
+      size: 1Gi
+    volumeMounts:
+    - mountPath: /build/plugins
+      name: headlamp-plugins
+    volumes:
+    - name: headlamp-plugins
+      persistentVolumeClaim:
+        claimName: headlamp
