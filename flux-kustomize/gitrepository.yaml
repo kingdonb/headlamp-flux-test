@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: headlamp-flux-test
+  namespace: test-yebyen
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: ssh://git@github.com/kingdonb/headlamp-flux-test.git
