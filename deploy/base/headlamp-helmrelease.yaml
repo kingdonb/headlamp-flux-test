@@ -29,11 +29,6 @@ spec:
       volumeMounts:
       - mountPath: /build/plugins
         name: headlamp-plugins
-    clusterRoleBinding:
-      create: false
-    securityContext:
-      runAsUser: ~
-      runAsGroup: ~
     persistentVolumeClaim:
       accessModes:
       - ReadWriteOnce

@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: flux-headlamp-app
+  name: flux-root
   namespace: test-yebyen
 spec:
   interval: 10m0s
-  path: ./deploy
+  path: ./flux-openshift
   prune: true
   sourceRef:
     kind: GitRepository
