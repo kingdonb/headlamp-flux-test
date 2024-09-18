@@ -12,6 +12,19 @@ patches:
     name: headlamp
 - patch: |
     - op: add
+      path: /spec/values/image
+      value:
+        registry: docker.io
+        repository: kingdonb/headlamp
+        pullPolicy: Always
+        tag: "canary"
+  target:
+    group: helm.toolkit.fluxcd.io
+    version: v2
+    kind: HelmRelease
+    name: headlamp
+- patch: |
+    - op: add
       path: /spec/values/securityContext
       value:
         runAsUser: ~
