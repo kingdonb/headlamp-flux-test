@@ -16,10 +16,11 @@ patches:
     metadata:
       name: headlamp
       namespace: test-yebyen
-    values:
-      securityContext:
-        runAsUser: ~
-        runAsGroup: ~
+    spec:
+      values:
+        securityContext:
+          runAsUser: ~
+          runAsGroup: ~
   target:
     group: helm.toolkit.fluxcd.io
     version: v2
