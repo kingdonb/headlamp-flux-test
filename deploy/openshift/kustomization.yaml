@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../base
+namespace: test-yebyen
 patches:
 - path: headlamp-helmrelease.yaml
   target:
@@ -9,21 +10,14 @@ patches:
     version: v2
     kind: HelmRelease
     name: headlamp
-    namespace: test-yebyen
 - patch: |
-    apiVersion: helm.toolkit.fluxcd.io/v2
-    kind: HelmRelease
-    metadata:
-      name: headlamp
-      namespace: test-yebyen
-    spec:
-      values:
-        securityContext:
-          runAsUser: ~
-          runAsGroup: ~
+    - op: add
+      path: /spec/values/securityContext
+      value:
+        runAsUser: ~
+        runAsGroup: ~
   target:
     group: helm.toolkit.fluxcd.io
     version: v2
     kind: HelmRelease
     name: headlamp
-    namespace: test-yebyen
