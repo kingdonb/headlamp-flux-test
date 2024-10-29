@@ -21,7 +21,7 @@ spec:
       - /bin/sh
       - -c
       - mkdir -p /build/plugins && cp -r /plugins/* /build/plugins/
-      image: kingdonb/plugins:canary
+      image: ghcr.io/ashu8912/flux-plugin:0.1.1-beta
       imagePullPolicy: Always
       name: headlamp-plugins
       volumeMounts:
