@@ -2,6 +2,8 @@
 
 Headlamp Flux (testing)
 
+Please refer to the official Headlamp documentation
+
 ### Known Issues
 
 * On OpenShift, as a project/tenant
