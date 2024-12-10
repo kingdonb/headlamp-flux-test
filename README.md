@@ -1,6 +1,6 @@
 ## WIP
 
-Headlamp Flux (testing)
+Headlamp Flux (testing x2)
 
 Please refer to the official Headlamp documentation
 
